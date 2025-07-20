@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallery</title>
+    <style>
+        img { width: 200px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Uploaded Images</h2>
+    {% for img in images %}
+        <img src="{{ url_for('uploaded_file', filename=img) }}">
+    {% endfor %}
+</body>
+</html>
