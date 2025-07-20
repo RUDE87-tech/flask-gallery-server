@@ -25,7 +25,12 @@ def gallery():
 def uploaded_file(filename):
     return send_from_directory(UPLOAD_FOLDER, filename)
 
-# ✅ Add this route to return all image URLs in JSON format
+
+@app.route('/gallery-json')
+def gallery_json():
+    files = os.listdir(UPLOAD_FOLDER)
+    urls = [f"https://flask-gallery-server.onrender.com/static/uploads/{file}" for file in files]
+    return jsonify(urls)
 @app.route('/gallery-json')
 def gallery_json():
     files = os.listdir(UPLOAD_FOLDER)
